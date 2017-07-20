@@ -32,15 +32,15 @@ app.use(bodyParser.urlencoded({
 // })
 
 
-app.get('/getRandomNumber', function(req, res) {
-    var random = fs.readFile('newRandom.txt', function(err, file) {
-        if (err) throw err;
-        console.log('Saved!');
-        res.end(file)
-    })
+// app.get('/getRandomNumber', function(req, res) {
+//     fs.readFile('newRandom.txt', function(err, file) {
+//         if (err) throw err;
+//         console.log('Saved!');
+//         res.end(file)
+//     })
 
 
-})
+// })
 
 app.post('/registration', function(req, res) {
     var firstName = req.body.firstName;
@@ -48,7 +48,7 @@ app.post('/registration', function(req, res) {
     var email = req.body.email;
     var phoneNumber = req.body.phoneNumber;
 
-    console.log (req.body.firstName) 
+    console.log(req.body.firstName)
 
     // res.end(firstName+lastName+email+phoneNumber)
     var result = firstName + lastName + email + phoneNumber;
@@ -56,23 +56,23 @@ app.post('/registration', function(req, res) {
         if (err) throw err;
         console.log('saved');
 
-    res.end(firstName+lastName+email+phoneNumber)
-    
+
     })
+    res.end(result)
+
 })
 
 app.get('/getInfo', function(req, res) {
-    var random = fs.readFile('newResult.txt', function(err, file) {
+    fs.readFile('newResult.txt', function(err, file) {
         if (err) throw err;
         console.log('get!');
-        res.end(file)
-    })
+        
 })
-
+res.end(file)
+    })
 
 app.listen(port, function() {
     console.log('The server is running, ' +
         ' please open your browser at http://localhost:%s',
         port);
 })
-
